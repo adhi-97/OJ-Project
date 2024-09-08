@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "K:\Mission Apple\Algo University\Project\Django\OnlineJudge\codes\21195203-2ef6-49ed-bf90-4d136506e092.py", line 11, in <module>
+    number1 = float(input("Enter the first number: "))
+ValueError: could not convert string to float: '2 3'

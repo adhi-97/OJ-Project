@@ -1,0 +1,4 @@
+  File "K:\Mission Apple\Algo University\Project\Django\OnlineJudge\codes\7eb26a4b-2daa-4faf-8593-1eaeb225e78b.py", line 1
+    // Write your code here
+    ^^
+SyntaxError: invalid syntax

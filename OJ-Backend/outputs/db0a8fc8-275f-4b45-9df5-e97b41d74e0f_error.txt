@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "K:\Mission Apple\Algo University\Project\Django\OnlineJudge\codes\db0a8fc8-275f-4b45-9df5-e97b41d74e0f.python", line 1, in <module>
+    a=int(input())
+EOFError: EOF when reading a line

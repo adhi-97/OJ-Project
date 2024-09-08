@@ -1,0 +1,4 @@
+  File "K:\Mission Apple\Algo University\Project\Django\OnlineJudge\codes\51fb8e5b-cb19-4ba8-a3be-cc05e3234002.py", line 1
+    print(2+5
+         ^
+SyntaxError: '(' was never closed
