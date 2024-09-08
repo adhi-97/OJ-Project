@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "K:\Mission Apple\Algo University\Project\Django\OnlineJudge\codes\a0f8f8a8-54e8-469a-989e-0d6a76805e40.py", line 11, in <module>
+    number1 = int(input("Enter the first number: "))
+ValueError: invalid literal for int() with base 10: '2 3'

@@ -1,0 +1,84 @@
+/* Full-screen container with gradient background */
+.container {
+  height: 150vh;
+  width: 200vw;
+  background: linear-gradient(135deg, #000000 0%, #001f3f 100%);
+  color: #e5e7eb; /* Light text color */
+  padding: 2rem; /* Increased padding */
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: normal; /* Align items to the left */
+  justify-content: center;
+}
+
+
+
+/* Header styling */
+.header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  color: #5c87c8; /* Light gray color */
+  text-align: end; /* Align text to the left */
+  width: 100%; /* Ensure header takes full width */
+  height: 3%;
+  max-width: 800px; /* Optional: Limit the maximum width */
+}
+
+.problem-item {
+  border: 1px solid #3b82f6; /* Subtle blue border */
+  border-radius: 1rem; /* Consistent, sleek border-radius */
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.85), rgba(17, 24, 39, 0.85)); /* Smooth gradient */
+  color: #5c87c8; /* White text */
+  padding: 1.5rem; /* Adequate padding for spacing */
+  display: grid;
+  grid-template-columns: 1fr auto; /* Flexible layout */
+  gap: 1rem; /* Space between items */
+  align-items: center; /* Center content vertically */
+  backdrop-filter: blur(10px); /* Refined blur for subtle glass effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1); /* Layered shadow for depth */
+  margin-bottom: 2.5rem; /* Comfortable spacing between items */
+  width: 100%;
+  max-width: 1400px; /* Wider but contained width */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Problem title styling */
+.problem-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem; /* Increased margin-bottom */
+}
+
+/* Difficulty text styling */
+.problem-difficulty {
+  font-size: 1.125rem;
+  color: #93c5fd; /* Light blue for difficulty text */
+}
+
+/* Link styling */
+.view-details-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem; /* Increased padding */
+  border: 1px solid #3b82f6;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: #1d4ed8; /* Darker blue background */
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem; /* Adjust font size */
+}
+
+.view-details-link:hover {
+  background: #2563eb; /* Slightly lighter blue on hover */
+  transform: translateY(-0.3rem); /* Slightly larger hover effect */
+}
+
+.view-details-link svg {
+  width: 1.75rem; /* Larger icon size */
+  height: 1.75rem; /* Larger icon size */
+  margin-left: 0.75rem; /* Increased margin-left */
+}

@@ -1,0 +1,239 @@
+/* General Container Styles */
+/* General Container Styles */
+.container1 {
+  display: flex;
+  flex-direction: column;
+  height: 95vh; /* Full height of the viewport */
+  width: 96.5vw;
+  padding: 10px;
+  margin: 0; /* Remove default margin */
+  background-color: #181818;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box; /* Ensure padding does not cause overflow */
+  overflow: hidden;
+}
+
+/* Layout Styles */
+.flex {
+  display: flex;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.p-4 {
+  padding: 16px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+/* Problem Statement Panel */
+.problem-statement {
+  width: 100%;
+  max-width: 600px; /* Limit width for responsiveness */
+  padding: 16px;
+  border-right: 1px solid #2c2c2c;
+  background-color: #202020;
+  overflow-y: auto;
+  color: #b0b0b0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  margin-right: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Editor Container */
+.editor-container {
+  flex: 1;
+  margin: 0; /* Remove vertical margin for alignment */
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* Ensure padding does not cause overflow */
+}
+
+/* Code Editor Area */
+.code-editor {
+  flex: 1;
+  min-height: 50vh; /* Minimum height for flexibility */
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  overflow: auto; /* Allow scroll if content overflows */
+}
+
+/* Input and Output Areas */
+.input-output-area {
+  display: table-column;
+  justify-content: space-between;
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  gap: 30px; /* Add gap between input and output */
+}
+
+/* Input and Output Text Areas */
+.input-output-textarea {
+  width: 500px;
+  max-width: 100%; /* Slightly increase width for better use of space */
+  height: 7rem; /* Increase height for better usability */
+  padding: 8px;
+  background-color: #333;
+  border: 1px solid #3d3d3d;
+  border-radius: 6px;
+  color: #e0e0e0;
+  resize: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+  box-sizing: border-box; /* Ensure padding does not cause overflow */
+}
+
+.result-textarea {
+  color: #e0e0e0;
+  resize: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Submit Button */
+.submit-button-container {
+  display: flex;
+  justify-content: end;
+  margin-top: 2px; /* Closer to editor */
+}
+
+.run-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px; /* Closer to editor */
+}
+
+.submit-button {
+  background-color: #357ab8;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 1px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 95px;
+  transition: background-color 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Ensure button is responsive and fits within the container */
+  max-width: 100%; /* Prevent button from overflowing */
+  max-height: 25%;
+  box-sizing: content-box; /* Ensure padding does not cause overflow */
+}
+
+.run-button {
+  background-color: #26d140;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 1px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 150px;
+  margin-top: 95px;
+  transition: background-color 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Ensure button is responsive and fits within the container */
+  max-width: 100%; /* Prevent button from overflowing */
+  max-height: 25%;
+  box-sizing: content-box; /* Ensure padding does not cause overflow */
+}
+
+.submit-button:hover {
+  background-color: #f80000;
+}
+
+/* Line Numbers */
+.line-numbers {
+  text-align: right;
+  padding-right: 10px;
+  border-right: 1px solid #3b3b3b;
+  color: #6a9955;
+  user-select: none;
+  margin-right: 10px;
+}
+
+.line-numbers span {
+  display: block;
+  line-height: 1.5rem;
+}
+
+/* Editor Header */
+.editor-header {
+  background-color: #333;
+  padding: 10px;
+  color: #9cdcfe;
+  font-size: 14px;
+  border-bottom: 1px solid #3b3b3b;
+  display: flex;
+  align-items: center;
+}
+
+.file-name {
+  font-weight: bold;
+  margin-left: 8px;
+  color: #dcdcaa;
+}
+
+/* Code Syntax Highlighting */
+.keyword {
+  color: #569cd6;
+}
+
+.function-name {
+  color: #dcdcaa;
+}
+
+.variable {
+  color: #9cdcfe;
+}
+
+.string {
+  color: #ce9178;
+}
+
+.method {
+  color: #dcdcaa;
+}
+
+.language-dropdown {
+  margin-top: 16px; /* Space between code editor and dropdown */
+  margin: 5px;
+  display: flex;
+  justify-content: center; /* Aligns the dropdown to the right */
+}
+
+.language-select {
+  padding: 8px;
+  border: 1px solid #5454ab;
+  border-radius: 4px;
+  background-color: #383e43;
+}
+
+.result{
+  justify-content: start;
+  margin-top: 100px;
+  margin-left: 35px;
+  font: font-semibold mb-2;
+}
+
+.test-results{
+  font: font-semibold mb-2;
+}
