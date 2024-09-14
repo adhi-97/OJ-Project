@@ -14,7 +14,7 @@ const LoginUser = () => {
   useEffect(() => {
     const fetchCSRFToken = async () => {
       try {
-        const response = await axios.get('https://onlinejudge-oj.onrender.com/csrf/');
+        const response = await axios.get('https://onlinejudge-oj.onrender.com/auth/csrf/');
         const csrfToken = response.data.csrfToken; // Ensure you fetch the token from your backend
         setCsrfToken(csrfToken);
       } catch (error) {
