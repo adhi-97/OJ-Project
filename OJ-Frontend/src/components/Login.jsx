@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
-import { getCSRFToken } from '../utils/csrfUtils';
+import { getFirstCSRFToken } from '../utils/csrfUtils';
 import axiosInstance from '../utils/axiosConfig';
 
 const LoginUser = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [csrfToken, setCsrfToken] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch the CSRF token when the component mounts
+    const fetchCSRFToken = async () => {
+      const token = await getFirstCSRFToken();
+      setCsrfToken(token);
+    };
+
+    fetchCSRFToken();
+  }, []);
 
   const handleLoginUser = async (event) => {
     event.preventDefault();
@@ -23,7 +34,7 @@ const LoginUser = () => {
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRFToken': getCSRFToken(),
+          'X-CSRFToken': csrfToken,
         }
       });
       console.log('User Login successfull:', response.data);
