@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCSRFToken } from '../utils/csrfUtils'; // Import the helper function to get CSRF token
 import './ListProblems.css'; // Import the CSS file
+import axiosInstance from '../utils/axiosConfig';
 
 function ListProblems() {
   const [problems, setProblems] = useState([]);
@@ -11,21 +12,19 @@ function ListProblems() {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/home/problems/', {
-          method: 'GET',
-          credentials: 'include', // Include credentials for session-based authentication
+        const response = await axiosInstance.get('home/problems/', {
+          withCredentials: true, // Include credentials for session-based authentication
           headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCSRFToken(), // Include CSRF token if necessary
           },
         });
   
-        if (!response.ok) {
+        if (!response.data) {
           throw new Error('Failed to fetch problems');
         }
   
-        const data = await response.json();
-        setProblems(data.all_problems); // Update to match API response structure
+        setProblems(response.data.all_problems); // Update to match API response structure
   
       } catch (err) {
         setError(err.message);

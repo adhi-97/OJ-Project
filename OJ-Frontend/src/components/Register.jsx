@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
 import './Login.css'; // Ensure the correct CSS file name
+import axiosInstance from '../utils/axiosConfig';
 
 const CreateUser = () => {
   const [username, setUsername] = useState('');
@@ -14,7 +15,7 @@ const CreateUser = () => {
   const handleCreateUser = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/register/', {
+      const response = await axiosInstance.post('auth/register/', {
         "username":username,
         "password":password,
       });

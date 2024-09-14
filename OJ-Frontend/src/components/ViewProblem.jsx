@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Editor from '@monaco-editor/react';
 import './ViewProblem.css'; // Import the separate CSS file
 import { getCSRFToken } from '../utils/csrfUtils'; 
+import axiosInstance from '../utils/axiosConfig';
 
 const CodeSubmissionApp = () => {
   const { id: problemId } = useParams(); // Extract problemId from URL parameters
@@ -20,22 +21,20 @@ const CodeSubmissionApp = () => {
   useEffect(() => {
     const fetchProblemDetails = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/home/problems/${problemId}/`, {
-          method: 'GET',
-          credentials: 'include', // Include credentials to handle CSRF
+        const response = await axiosInstance.get(`home/problems/${problemId}/`, {
+          withCredentials: true, // Include credentials to handle CSRF
           headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCSRFToken(),
           },
         });
 
-        if (!response.ok) {
+        if (!response.data) {
           throw new Error('Failed to fetch problem details');
         }
 
-        const data = await response.json();
-        setProblemStatement(data.statement);
-        setProblemTitle(data.name);
+        setProblemStatement(response.data.statement);
+        setProblemTitle(response.data.name);
 
       } catch (error) {
         setError(error.message);
@@ -56,64 +55,79 @@ const CodeSubmissionApp = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/codeSubmission/problem/submit-code-test/', {
-        method: 'POST',
-        credentials: 'include', // Include credentials to handle CSRF
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCSRFToken(),
+      const response = await axiosInstance.post(
+        'codeSubmission/problem/submit-code-test/',
+        {
+          language, 
+          code, 
+          input_data: input, 
+          problem_id: problemId, // The payload you want to send
         },
-        body: JSON.stringify({ language, code, input_data: input ,problem_id:problemId}), // Include selected language
-      });
-      
-      if (!response.ok) {
+        {
+          withCredentials: true, // Include credentials to handle CSRF
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken(),
+          },
+        }
+      );
+  
+      if (!response.data) {
         throw new Error('Failed to submit code');
       }
-
-      const result = await response.json();
-      if (result.success) {
+  
+      if (response.data.success) {
         setOutput('All test cases passed!');
       } else {
+        setTestResults(response.data.output_data); // Assuming this is an array of test case results
         
-        setTestResults(result.output_data); // Assuming this is an array of test case results
         // Format the output for display
-      const formattedOutput = result.output_data.map(
-        (testResult) =>
-          `Test Case ${testResult.test_case}: ${
-            testResult.success ? 'Passed' : 'Failed'
-          }`
-      ).join('\n');
-
-      setOutput('Some test cases failed:\n'+formattedOutput); // Set the formatted output
+        const formattedOutput = response.data.output_data
+          .map(
+            (testResult) =>
+              `Test Case ${testResult.test_case}: ${
+                testResult.success ? 'Passed' : 'Failed'
+              }`
+          )
+          .join('\n');
+  
+        setOutput('Some test cases failed:\n' + formattedOutput); // Set the formatted output
       }
     } catch (error) {
       console.error('Error submitting code:', error);
       setError('Failed to submit code');
     }
   };
+  
 
   const handleRun = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/codeSubmission/problem/submit-code/', {
-        method: 'POST',
-        credentials: 'include', // Include credentials to handle CSRF
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCSRFToken(),
+      const response = await axiosInstance.post(
+        'codeSubmission/problem/submit-code/',
+        {
+          language, 
+          code, 
+          input_data: input, // The payload you want to send
         },
-        body: JSON.stringify({ language, code, input_data: input }), // Include selected language
-      });
+        {
+          withCredentials: true, // Include credentials to handle CSRF
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken(),
+          },
+        }
+      );
       
-      if (!response.ok) {
+      if (!response.data) {
         throw new Error('Failed to submit code');
       }
-
-      const result = await response.json();
-      setOutput(result.output_data);
+  
+      setOutput(response.data.output_data);
     } catch (error) {
       console.error('Error submitting code:', error);
     }
   };
+  
 
   return (
     <div className="container1">
