@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
+import { getCSRFToken } from '../utils/csrfUtils';
+import axiosInstance from '../utils/axiosConfig';
 
 const LoginUser = () => {
   const [username, setUsername] = useState('');
@@ -14,11 +16,15 @@ const LoginUser = () => {
     var response=null;
     
     try {
-      response = await axios.post('http://127.0.0.1:8000/auth/login/', {
+      response = await axiosInstance.post('auth/login/', {
         "username":username,
         "password":password,
       }, {
         withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCSRFToken(),
+        }
       });
       console.log('User Login successfull:', response.data);
       // Navigate to another page if needed
