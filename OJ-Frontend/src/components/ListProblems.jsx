@@ -14,7 +14,7 @@ function ListProblems() {
       try {
         const response = await axiosInstance.get('home/problems/',{
           headers: {
-            'x-csrftoken': getCSRFToken(),  // Use the actual token here
+            'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
           }
       });
   

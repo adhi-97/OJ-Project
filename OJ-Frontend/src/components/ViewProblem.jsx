@@ -23,7 +23,7 @@ const CodeSubmissionApp = () => {
       try {
         const response = await axiosInstance.get(`home/problems/${problemId}/`,{
           headers: {
-            'x-csrftoken': getCSRFToken(),  // Use the actual token here
+            'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
           }
       });
 
@@ -62,7 +62,7 @@ const CodeSubmissionApp = () => {
           problem_id: problemId, // The payload you want to send
         },{
           headers: {
-            'x-csrftoken': getCSRFToken(),  // Use the actual token here
+            'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
           }
       }
       );
@@ -105,7 +105,7 @@ const CodeSubmissionApp = () => {
           input_data: input, // The payload you want to send
         },{
           headers: {
-            'x-csrftoken': getCSRFToken(),  // Use the actual token here
+            'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
           }
       }
       );
