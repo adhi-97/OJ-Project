@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Editor from '@monaco-editor/react';
 import './ViewProblem.css'; // Import the separate CSS file
-import { getCSRFToken } from '../utils/csrfUtils'; 
 import axiosInstance from '../utils/axiosConfig';
 
 const CodeSubmissionApp = () => {
@@ -21,13 +20,7 @@ const CodeSubmissionApp = () => {
   useEffect(() => {
     const fetchProblemDetails = async () => {
       try {
-        const response = await axiosInstance.get(`home/problems/${problemId}/`, {
-          withCredentials: true, // Include credentials to handle CSRF
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken(),
-          },
-        });
+        const response = await axiosInstance.get(`home/problems/${problemId}/`);
 
         if (!response.data) {
           throw new Error('Failed to fetch problem details');
@@ -62,13 +55,6 @@ const CodeSubmissionApp = () => {
           code, 
           input_data: input, 
           problem_id: problemId, // The payload you want to send
-        },
-        {
-          withCredentials: true, // Include credentials to handle CSRF
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken(),
-          },
         }
       );
   
@@ -108,13 +94,6 @@ const CodeSubmissionApp = () => {
           language, 
           code, 
           input_data: input, // The payload you want to send
-        },
-        {
-          withCredentials: true, // Include credentials to handle CSRF
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken(),
-          },
         }
       );
       
