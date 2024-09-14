@@ -23,6 +23,7 @@ export const getCSRFToken = async () => {
 
     const response = await axios.get('https://onlinejudge-oj.onrender.com/auth/csrf/');
     const csrfToken = response.data.csrfToken;
+    console.debug(csrfToken)
     return csrfToken;
   } catch (error) {
     console.error('Error fetching CSRF token:', error);
