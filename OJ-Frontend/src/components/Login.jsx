@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
 import axiosInstance from '../utils/axiosConfig';
+import { getCSRFToken } from '../utils/csrfUtils'; 
 
 const LoginUser = () => {
   const [username, setUsername] = useState('');
@@ -18,7 +19,11 @@ const LoginUser = () => {
       response = await axiosInstance.post('auth/login/', {
         "username":username,
         "password":password,
-      });
+      },{
+        headers: {
+          'x-csrftoken': getCSRFToken(),  // Use the actual token here
+        }
+    });
       console.log('User Login successfull:', response.data);
       // Navigate to another page if needed
       navigate('/problems'); // Change '/success' to your desired route

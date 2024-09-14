@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCSRFToken } from '../utils/csrfUtils'; // Import the helper function to get CSRF token
 import './ListProblems.css'; // Import the CSS file
-import axiosInstance from '../utils/axiosConfig';
+import axiosInstance from '../utils/axiosConfig'; 
 
 function ListProblems() {
   const [problems, setProblems] = useState([]);
@@ -12,7 +12,11 @@ function ListProblems() {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await axiosInstance.get('home/problems/');
+        const response = await axiosInstance.get('home/problems/',{
+          headers: {
+            'x-csrftoken': getCSRFToken(),  // Use the actual token here
+          }
+      });
   
         if (!response.data) {
           throw new Error('Failed to fetch problems');

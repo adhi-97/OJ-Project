@@ -1,7 +1,6 @@
-import axios from 'axios';
 import axiosInstance from '../utils/axiosConfig';
 
-export function getCSRFToken1() {
+export function getCSRFToken() {
   // Check all cookies
   const cookies = document.cookie.split(';');
   console.log('Document Cookies:', cookies); // Log all cookies to debug
@@ -19,7 +18,7 @@ export function getCSRFToken1() {
 }
 
 // Fetch CSRF token from Django backend and cache it
-export const getCSRFToken = async () => {
+export const getCSRFToken1 = async () => {
   // Check if the CSRF token is already cached in local storage
   let cachedToken = localStorage.getItem('csrfToken');
   
