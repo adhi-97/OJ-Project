@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import log from '../logger';
 import './Login.css'; // Ensure the correct CSS file name
 import axiosInstance from '../utils/axiosConfig';
+import { getCSRFToken1 } from '../utils/csrfUtils';
 
 const CreateUser = () => {
   const [username, setUsername] = useState('');
@@ -15,6 +16,8 @@ const CreateUser = () => {
   const handleCreateUser = async (event) => {
     event.preventDefault();
     try {
+      const token = getCSRFToken1();
+      console.log(token)
       const response = await axiosInstance.post('auth/register/', {
         "username":username,
         "password":password,
