@@ -16,6 +16,7 @@ const LoginUser = () => {
       try {
         const response = await axios.get('https://onlinejudge-oj.onrender.com/auth/csrf/');
         const csrfToken = response.data.csrfToken; // Ensure you fetch the token from your backend
+        console.log(csrfToken)
         setCsrfToken(csrfToken);
       } catch (error) {
         console.error('Error fetching CSRF token:', error);
@@ -32,12 +33,6 @@ const LoginUser = () => {
       response = await axiosInstance.post('auth/login/', {
         "username":username,
         "password":password,
-      }, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': csrfToken,
-        }
       });
       console.log('User Login successfull:', response.data);
       // Navigate to another page if needed

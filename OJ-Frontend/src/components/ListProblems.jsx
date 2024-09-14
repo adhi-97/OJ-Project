@@ -12,13 +12,7 @@ function ListProblems() {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await axiosInstance.get('home/problems/', {
-          withCredentials: true, // Include credentials for session-based authentication
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken(), // Include CSRF token if necessary
-          },
-        });
+        const response = await axiosInstance.get('home/problems/');
   
         if (!response.data) {
           throw new Error('Failed to fetch problems');

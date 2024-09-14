@@ -16,3 +16,4 @@ export function getCSRFToken() {
   console.warn('CSRF token not found in cookies.'); // Log warning if not found
   return null;
 }
+
