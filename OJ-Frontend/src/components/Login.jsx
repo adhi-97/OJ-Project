@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
 import axiosInstance from '../utils/axiosConfig';
-import { getCSRFToken } from '../utils/csrfUtils'; 
 
 const LoginUser = () => {
   const [username, setUsername] = useState('');
@@ -21,7 +20,7 @@ const LoginUser = () => {
         "password":password,
       },{
         headers: {
-          'x-csrftoken': getCSRFToken(),  // Use the actual token here
+          'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
         }
     });
       console.log('User Login successfull:', response.data);

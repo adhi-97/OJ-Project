@@ -20,7 +20,7 @@ export function getCSRFToken() {
 // Fetch CSRF token from Django backend and cache it
 export const getCSRFToken1 = async () => {
   // Check if the CSRF token is already cached in local storage
-  let cachedToken = localStorage.getItem('csrfToken');
+  let cachedToken = sessionStorage.getItem('csrfToken');
   
   // If the token exists, return it directly
   if (cachedToken) {
@@ -35,7 +35,7 @@ export const getCSRFToken1 = async () => {
     console.debug('Using CSRF token:', csrfToken);
     if (csrfToken) {
       // Cache the CSRF token in local storage for future use
-      localStorage.setItem('csrfToken', csrfToken);
+      sessionStorage.setItem('csrfToken', csrfToken);
       console.debug('Fetched new CSRF token:', csrfToken);
     }
 
