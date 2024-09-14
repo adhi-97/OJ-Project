@@ -7,7 +7,7 @@ const instance = axios.create({
     'Content-Type': 'application/json',
     'X-CSRFToken': getCSRFToken(),
   },
-  withCredentials: true, // Enable this if you're dealing with cookies, sessions, or CSRF tokens
+  withCredentials: true, //  Enable this if you're dealing with cookies, sessions, or CSRF tokens
 });
 
 export default instance;
