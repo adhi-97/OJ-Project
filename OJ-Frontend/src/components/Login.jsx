@@ -8,22 +8,7 @@ const LoginUser = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const [csrfToken, setCsrfToken] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchCSRFToken = async () => {
-      try {
-        const response = await axios.get('https://onlinejudge-oj.onrender.com/auth/csrf/');
-        const csrfToken = response.data.csrfToken; // Ensure you fetch the token from your backend
-        console.log(csrfToken)
-        setCsrfToken(csrfToken);
-      } catch (error) {
-        console.error('Error fetching CSRF token:', error);
-      }
-    };
-    fetchCSRFToken();
-  }, []);
 
   const handleLoginUser = async (event) => {
     event.preventDefault();

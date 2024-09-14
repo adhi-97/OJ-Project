@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosInstance from '../utils/axiosConfig';
 
 export function getCSRFToken1() {
   // Check all cookies
@@ -17,17 +18,33 @@ export function getCSRFToken1() {
   return null;
 }
 
-// Fetch CSRF token from Django backend
+// Fetch CSRF token from Django backend and cache it
 export const getCSRFToken = async () => {
-  try {
+  // Check if the CSRF token is already cached in local storage
+  let cachedToken = localStorage.getItem('csrfToken');
+  
+  // If the token exists, return it directly
+  if (cachedToken) {
+    console.debug('Using cached CSRF token:', cachedToken);
+    return cachedToken;
+  }
 
-    const response = await axios.get('https://onlinejudge-oj.onrender.com/auth/csrf/');
+  try {
+    // Fetch a new CSRF token from the server
+    const response = await axiosInstance.get('auth/csrf/');
     const csrfToken = response.data.csrfToken;
-    console.debug(csrfToken)
+    console.debug('Using CSRF token:', csrfToken);
+    if (csrfToken) {
+      // Cache the CSRF token in local storage for future use
+      localStorage.setItem('csrfToken', csrfToken);
+      console.debug('Fetched new CSRF token:', csrfToken);
+    }
+
     return csrfToken;
   } catch (error) {
     console.error('Error fetching CSRF token:', error);
     return null;
   }
 };
+
 
