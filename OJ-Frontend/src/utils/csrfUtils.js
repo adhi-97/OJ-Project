@@ -21,7 +21,7 @@ export function getCSRFToken1() {
 export const getCSRFToken = async () => {
   try {
 
-    const response = await axios.get('https://onlinejudge-oj.onrender.com/csrf/');
+    const response = await axios.get('https://onlinejudge-oj.onrender.com/auth/csrf/');
     const csrfToken = response.data.csrfToken;
     return csrfToken;
   } catch (error) {
