@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import log from '../logger';
 import './Login.css'; // Ensure the correct CSS file name
 import axiosInstance from '../utils/axiosConfig';
+import { getCSRFToken } from '../utils/csrfUtils'; 
 
 const CreateUser = () => {
   const [username, setUsername] = useState('');
@@ -18,7 +19,11 @@ const CreateUser = () => {
       const response = await axiosInstance.post('auth/register/', {
         "username":username,
         "password":password,
-      });
+      },{
+        headers: {
+          'x-csrftoken': getCSRFToken(),  // Use the actual token here
+        }
+    });
       console.log('User created successfully:', response.data);
       // Navigate to another page if needed
       navigate('/'); // Change '/success' to your desired route
