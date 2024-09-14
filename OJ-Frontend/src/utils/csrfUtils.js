@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getCSRFToken() {
+export function getCSRFToken1() {
   // Check all cookies
   const cookies = document.cookie.split(';');
   console.log('Document Cookies:', cookies); // Log all cookies to debug
@@ -16,4 +16,17 @@ export function getCSRFToken() {
   console.warn('CSRF token not found in cookies.'); // Log warning if not found
   return null;
 }
+
+// Fetch CSRF token from Django backend
+export const getCSRFToken = async () => {
+  try {
+
+    const response = await axios.get('https://onlinejudge-oj.onrender.com/csrf/');
+    const csrfToken = response.data.csrfToken;
+    return csrfToken;
+  } catch (error) {
+    console.error('Error fetching CSRF token:', error);
+    return null;
+  }
+};
 
