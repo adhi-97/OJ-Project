@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
 import axiosInstance from '../utils/axiosConfig';
+import { getCSRFToken1 } from '../utils/csrfUtils';
 
 const LoginUser = () => {
   const [username, setUsername] = useState('');
@@ -15,6 +16,8 @@ const LoginUser = () => {
     var response=null;
     
     try {
+      const token = getCSRFToken1();
+      console.log(token)
       response = await axiosInstance.post('auth/login/', {
         "username":username,
         "password":password,
