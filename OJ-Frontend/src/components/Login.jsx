@@ -16,6 +16,7 @@ const LoginUser = () => {
     var response=null;
     
     try {
+      response= await axiosInstance.get('admin/');
       response = await axiosInstance.post('auth/login/', {
         "username":username,
         "password":password,
