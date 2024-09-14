@@ -16,7 +16,7 @@ const LoginUser = () => {
     var response=null;
     
     try {
-      const token = getCSRFToken1();
+      const token = await getCSRFToken1();
       console.log(token)
       response = await axiosInstance.post('auth/login/', {
         "username":username,

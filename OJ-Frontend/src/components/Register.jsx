@@ -16,7 +16,7 @@ const CreateUser = () => {
   const handleCreateUser = async (event) => {
     event.preventDefault();
     try {
-      const token = getCSRFToken1();
+      const token = await getCSRFToken1();
       console.log(token)
       const response = await axiosInstance.post('auth/register/', {
         "username":username,
