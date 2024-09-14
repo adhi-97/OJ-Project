@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8000/', // Your backend URL
+  baseURL: 'https://onlinejudge-oj.onrender.com/', // Your backend URL
   headers: {
     'Content-Type': 'application/json',
   },
