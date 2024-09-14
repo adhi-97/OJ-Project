@@ -16,22 +16,3 @@ export function getCSRFToken() {
   console.warn('CSRF token not found in cookies.'); // Log warning if not found
   return null;
 }
-
-export const getFirstCSRFToken = async () => {
-  try {
-    const response = await axios.get('https://onlinejudge-oj.onrender.com/admin/');
-    const cookies = document.cookie.split(';');
-    for (let cookie of cookies) {
-      const [name, value] = cookie.trim().split('=');
-      console.log('Checking cookie:', name); // Log each cookie name
-      if (name === 'csrftoken') {
-        console.log('Found CSRF Token:', value); // Log the CSRF token value
-        return decodeURIComponent(value);
-      }
-    }
-    console.warn('CSRF token not found in cookies.'); // Log warning if not found
-    return null;
-  } catch (error) {
-    console.error('Error fetching CSRF token:', error);
-  }
-};
