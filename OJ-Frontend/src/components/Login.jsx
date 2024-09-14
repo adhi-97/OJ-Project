@@ -2,7 +2,6 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
-import { getFirstCSRFToken } from '../utils/csrfUtils';
 import axiosInstance from '../utils/axiosConfig';
 
 const LoginUser = () => {
@@ -13,12 +12,15 @@ const LoginUser = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the CSRF token when the component mounts
     const fetchCSRFToken = async () => {
-      const token = await getFirstCSRFToken();
-      setCsrfToken(token);
+      try {
+        const response = await axios.get('https://onlinejudge-oj.onrender.com/csrf/');
+        const csrfToken = response.data.csrfToken; // Ensure you fetch the token from your backend
+        setCsrfToken(csrfToken);
+      } catch (error) {
+        console.error('Error fetching CSRF token:', error);
+      }
     };
-
     fetchCSRFToken();
   }, []);
 
