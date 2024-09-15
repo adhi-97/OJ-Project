@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getCSRFToken } from '../utils/csrfUtils';
 
 // Create an instance of Axios
 const axiosInstance = axios.create({
@@ -6,6 +7,7 @@ const axiosInstance = axios.create({
   withCredentials: true, // This ensures cookies are sent with each request
   headers: {
     'Content-Type': 'application/json',
+    'X-CSRFToken':getCSRFToken()
   },
 });
 
@@ -21,7 +23,7 @@ axiosInstance.interceptors.request.use(
     if (csrfToken) {
       config.headers['X-CSRFToken'] = csrfToken;
     }
-
+    console.log('Token--->'+csrfToken)
     return config;
   },
   (error) => {
