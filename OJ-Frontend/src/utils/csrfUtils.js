@@ -26,6 +26,8 @@ export const getCSRFToken1 = async () => {
   // If the token exists, return it directly
   if (cachedToken) {
     console.debug('Using cached CSRF token:', cachedToken);
+    const cookies = document.cookie.split(';');
+    console.log('Document Cookies Cached:', cookies);
     return cachedToken;
   }
 
@@ -39,7 +41,8 @@ export const getCSRFToken1 = async () => {
       sessionStorage.setItem('csrfToken', csrfToken);
       console.debug('Fetched new CSRF token:', csrfToken);
     }
-
+    const cookies = document.cookie.split(';');
+    console.log('Document Cookies:', cookies);
     return csrfToken;
   } catch (error) {
     console.error('Error fetching CSRF token:', error);
