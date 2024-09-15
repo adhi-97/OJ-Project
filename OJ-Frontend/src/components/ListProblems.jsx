@@ -12,8 +12,12 @@ function ListProblems() {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await axiosInstance.get('/home/problems/');
-  
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axiosInstance.get('home/problems/',{
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Include access token in Authorization header
+          }});
+        console.log(response)
         if (!response.data) {
           throw new Error('Failed to fetch problems');
         }

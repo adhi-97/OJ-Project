@@ -10,28 +10,6 @@ const LoginUser = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchCsrfToken = async () => {
-      try {
-        // Fetch CSRF token from your API
-        const response = await axiosInstance.get('auth/csrf/');
-        const csrfToken = response.data.csrfToken;
-
-        if (csrfToken) {
-          // Store the CSRF token in cookies
-          document.cookie = `csrftoken=${csrfToken}; path=/`;
-          console.log('CSRF token stored in cookies:', csrfToken);
-        } else {
-          console.warn('No CSRF token returned from API');
-        }
-      } catch (error) {
-        console.error('Error fetching CSRF token:', error);
-      }
-    };
-
-    fetchCsrfToken();
-  }, []);
-
   const handleLoginUser = async (event) => {
     event.preventDefault();
     var response=null;
@@ -42,6 +20,8 @@ const LoginUser = () => {
         "password":password,
       });
       console.log('User Login successfull:', response.data);
+      localStorage.setItem('accessToken', response.data.tokens.access);
+      localStorage.setItem('refreshToken', response.data.tokens.refresh);
       // Navigate to another page if needed
       navigate('/problems'); // Change '/success' to your desired route
     } catch (error) {
