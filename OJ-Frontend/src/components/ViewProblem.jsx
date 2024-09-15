@@ -20,7 +20,11 @@ const CodeSubmissionApp = () => {
   useEffect(() => {
     const fetchProblemDetails = async () => {
       try {
-        const response = await axiosInstance.get(`home/problems/${problemId}/`);
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axiosInstance.get(`home/problems/${problemId}/`,{
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Include access token in Authorization header
+          }});
 
         if (!response.data) {
           throw new Error('Failed to fetch problem details');
@@ -48,6 +52,7 @@ const CodeSubmissionApp = () => {
 
   const handleSubmit = async () => {
     try {
+      const accessToken = localStorage.getItem("accessToken");
       const response = await axiosInstance.post(
         'codeSubmission/problem/submit-code-test/',
         {
@@ -55,7 +60,10 @@ const CodeSubmissionApp = () => {
           code, 
           input_data: input, 
           problem_id: problemId, // The payload you want to send
-        });
+        },{
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Include access token in Authorization header
+          }});
   
       if (!response.data) {
         throw new Error('Failed to submit code');
@@ -87,13 +95,18 @@ const CodeSubmissionApp = () => {
 
   const handleRun = async () => {
     try {
+      const accessToken = localStorage.getItem("accessToken");
+      console.log(accessToken)
       const response = await axiosInstance.post(
         'codeSubmission/problem/submit-code/',
         {
           language, 
           code, 
           input_data: input, // The payload you want to send
-        });
+        },{
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Include access token in Authorization header
+          }});
       
       if (!response.data) {
         throw new Error('Failed to submit code');
