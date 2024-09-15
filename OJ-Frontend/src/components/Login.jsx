@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import log from '../logger';
 import axiosInstance from '../utils/axiosConfig';
-import { getCSRFToken1,getCSRFToken } from '../utils/csrfUtils';
 
 const LoginUser = () => {
   const [username, setUsername] = useState('');
@@ -11,23 +10,37 @@ const LoginUser = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchCsrfToken = async () => {
+      try {
+        // Fetch CSRF token from your API
+        const response = await axiosInstance.get('auth/csrf/');
+        const csrfToken = response.data.csrfToken;
+
+        if (csrfToken) {
+          // Store the CSRF token in cookies
+          document.cookie = `csrftoken=${csrfToken}; path=/`;
+          console.log('CSRF token stored in cookies:', csrfToken);
+        } else {
+          console.warn('No CSRF token returned from API');
+        }
+      } catch (error) {
+        console.error('Error fetching CSRF token:', error);
+      }
+    };
+
+    fetchCsrfToken();
+  }, []);
+
   const handleLoginUser = async (event) => {
     event.preventDefault();
     var response=null;
     
     try {
-      const token = await getCSRFToken1();
-      const cookie = await getCSRFToken();
-      console.log(token)
-      console.log(cookie)
       response = await axiosInstance.post('auth/login/', {
         "username":username,
         "password":password,
-      },{
-        headers: {
-          'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
-        }
-    });
+      });
       console.log('User Login successfull:', response.data);
       // Navigate to another page if needed
       navigate('/problems'); // Change '/success' to your desired route

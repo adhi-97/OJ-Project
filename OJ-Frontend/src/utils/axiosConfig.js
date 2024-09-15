@@ -1,11 +1,32 @@
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://onlinejudge-oj.onrender.com/', // Your backend URL
+// Create an instance of Axios
+const axiosInstance = axios.create({
+  baseURL: 'https://onlinejudge-oj.onrender.com/',
+  withCredentials: true, // This ensures cookies are sent with each request
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Enable this if you're dealing with cookies, sessions, or CSRF tokens
 });
 
-export default instance;
+// Interceptor to set CSRF token from cookies
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    // Assuming CSRF token is stored in cookies
+    const csrfToken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('csrftoken'))
+      ?.split('=')[1];
+
+    if (csrfToken) {
+      config.headers['X-CSRFToken'] = csrfToken;
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+export default axiosInstance;
