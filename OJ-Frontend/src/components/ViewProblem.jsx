@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Editor from '@monaco-editor/react';
 import './ViewProblem.css'; // Import the separate CSS file
 import axiosInstance from '../utils/axiosConfig';
-import { getCSRFToken } from '../utils/csrfUtils';
 
 const CodeSubmissionApp = () => {
   const { id: problemId } = useParams(); // Extract problemId from URL parameters
@@ -21,11 +20,7 @@ const CodeSubmissionApp = () => {
   useEffect(() => {
     const fetchProblemDetails = async () => {
       try {
-        const response = await axiosInstance.get(`home/problems/${problemId}/`,{
-          headers: {
-            'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
-          }
-      });
+        const response = await axiosInstance.get(`home/problems/${problemId}/`);
 
         if (!response.data) {
           throw new Error('Failed to fetch problem details');
@@ -60,12 +55,7 @@ const CodeSubmissionApp = () => {
           code, 
           input_data: input, 
           problem_id: problemId, // The payload you want to send
-        },{
-          headers: {
-            'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
-          }
-      }
-      );
+        });
   
       if (!response.data) {
         throw new Error('Failed to submit code');
@@ -103,12 +93,7 @@ const CodeSubmissionApp = () => {
           language, 
           code, 
           input_data: input, // The payload you want to send
-        },{
-          headers: {
-            'x-csrftoken': sessionStorage.getItem('csrfToken'),  // Use the actual token here
-          }
-      }
-      );
+        });
       
       if (!response.data) {
         throw new Error('Failed to submit code');
