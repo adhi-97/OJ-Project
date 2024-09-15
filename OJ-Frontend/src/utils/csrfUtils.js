@@ -9,6 +9,7 @@ export function getCSRFToken() {
     console.log('Checking cookie:', name); // Log each cookie name
     if (name === 'csrftoken') {
       console.log('Found CSRF Token:', value); // Log the CSRF token value
+      sessionStorage.setItem('csrfToken', decodeURIComponent(value));
       return decodeURIComponent(value);
     }
   }
