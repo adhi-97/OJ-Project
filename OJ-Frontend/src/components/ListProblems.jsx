@@ -38,7 +38,7 @@ function ListProblems() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="container">
+    <div className="container2">
       <h1 className="header">Problems List</h1>
       <ul>
         {problems.map((problem) => (

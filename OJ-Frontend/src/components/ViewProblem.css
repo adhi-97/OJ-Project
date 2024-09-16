@@ -3,8 +3,8 @@
 .container1 {
   display: flex;
   flex-direction: column;
-  height: 95vh; /* Full height of the viewport */
-  width: 96.5vw;
+  height: 100vh; /* Full height of the viewport */
+  width: 100%;
   padding: 10px;
   margin: 0; /* Remove default margin */
   background-color: #181818;
@@ -12,6 +12,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box; /* Ensure padding does not cause overflow */
   overflow: hidden;
+
 }
 
 /* Layout Styles */
@@ -24,7 +25,7 @@
 }
 
 .h-screen {
-  height: 100vh;
+  height: 100%;
 }
 
 .p-4 {
@@ -36,20 +37,28 @@
 }
 
 /* Problem Statement Panel */
+/* Problem Statement Panel */
 .problem-statement {
   width: 100%;
   max-width: 600px; /* Limit width for responsiveness */
+  height: 67vh; /* Set a fixed height for the scrollable area */
   padding: 16px;
   border-right: 1px solid #2c2c2c;
   background-color: #202020;
-  overflow-y: auto;
   color: #b0b0b0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   margin-right: 16px;
   border-radius: 8px;
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
   display: flex;
   flex-direction: column;
 }
+
+.problem-statement::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
 
 /* Editor Container */
 .editor-container {
@@ -118,6 +127,7 @@
   display: flex;
   justify-content: center;
   margin-top: 2px; /* Closer to editor */
+  margin-left: 100px;
 }
 
 .submit-button {

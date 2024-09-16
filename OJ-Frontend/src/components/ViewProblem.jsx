@@ -16,6 +16,15 @@ const CodeSubmissionApp = () => {
   const [language, setLanguage] = useState('python'); // State for selected language
   const [testResults, setTestResults] = useState([]);
 
+  const formatProblemStatement = (text) => {
+    return text.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+
   // Fetch the problem statement from the backend API
   useEffect(() => {
     const fetchProblemDetails = async () => {
@@ -125,7 +134,7 @@ const CodeSubmissionApp = () => {
         {/* Problem Statement Panel */}
         <div className="problem-statement">
           <h2 className="text-lg font-bold mb-2">Problem Statement</h2>
-          <p className="text-sm">{problemStatement}</p>
+          <p className="text-sm">{formatProblemStatement(problemStatement)}</p>
         </div>
 
         {/* Code Editor */}
