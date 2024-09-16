@@ -3,11 +3,11 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 200vh; /* Full viewport height */
+    height: 100vh; /* Full viewport height */
     width: 100vw;
     background: linear-gradient(135deg, #000000 0%, #001f3f 100%);
     color: white;
-    overflow: hidden;
+    overflow: -moz-hidden-unscrollable;
   }
   
   .form-container {
