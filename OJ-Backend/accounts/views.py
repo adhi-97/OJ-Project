@@ -1,15 +1,23 @@
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_http_methods
-from django.middleware.csrf import get_token
-from django.utils.decorators import method_decorator
-from django.views import View
-from django.contrib.auth import authenticate, login, logout
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from django.contrib.auth.models import User
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import authenticate
 import json
 
-@csrf_exempt
-@require_http_methods(["POST"])
+# Function to get JWT tokens for a user
+
+def get_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+    }
+
+# Register a new user
+@api_view(['POST'])
+@permission_classes([AllowAny])
 def register_user(request):
     try:
         data = json.loads(request.body)
@@ -27,30 +35,47 @@ def register_user(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
 
-@csrf_exempt
-@require_http_methods(["POST"])
+# Login user and return JWT tokens
+@api_view(['POST'])
+@permission_classes([AllowAny])
 def login_user(request):
     try:
         data = json.loads(request.body)
         username = data.get('username')
         password = data.get('password')
-
+        print(username,password)
         user = authenticate(username=username, password=password)
 
         if user is None:
             return JsonResponse({'error': 'Invalid username or password'}, status=401)
         
-        login(request, user)
-        return JsonResponse({'message': 'Login successful'}, status=200)
+        # Generate JWT token
+        tokens = get_tokens_for_user(user)
+
+        return JsonResponse({
+            'message': 'Login successful',
+            'tokens': tokens
+        }, status=200)
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
 
-@csrf_exempt
-@require_http_methods(["POST"])
+# Logout user by blacklisting the refresh token (optional)
+@api_view(['POST'])
 def logout_user(request):
     try:
-        logout(request)
-        return JsonResponse({'message': 'Logout successful'}, status=200)
+        # To logout a user in JWT, we typically blacklist the refresh token
+        token = request.data.get('refresh_token')
+
+        if token:
+            try:
+                refresh_token = RefreshToken(token)
+                refresh_token.blacklist()  # Blacklist the token
+                return JsonResponse({'message': 'Logout successful'}, status=200)
+            except Exception as e:
+                return JsonResponse({'error': str(e)}, status=400)
+        else:
+            return JsonResponse({'error': 'No refresh token provided'}, status=400)
+
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)

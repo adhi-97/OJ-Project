@@ -5,6 +5,6 @@
     },
     {
         "input": "10\n15\n",
-        "expected_output": "25\n"
+        "expected_output": "26\n"
     }
 ]

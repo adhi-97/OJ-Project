@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "K:\Mission Apple\Algo University\Project\Django\OnlineJudge\codes\ac4f9c55-9f7d-4a2a-a4a6-d9ff5b2ae2c5.python", line 3, in <module>
+    cout<<1+2;
+NameError: name 'cout' is not defined

@@ -1,17 +1,20 @@
 from django.shortcuts import get_object_or_404
 from home.models import problem
-from django.contrib.auth.decorators import login_required
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
 
 # Create your views here.
 
-@login_required
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def all_problems(request):
     all_problems = problem.objects.all().values('id', 'statement', 'name', 'code', 'difficulty')
     problems_list = list(all_problems)
     return JsonResponse({'all_problems': problems_list})
 
-@login_required
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def problem_detail(request, problem_id):
     req_problem = get_object_or_404(problem, id=problem_id)
     problem_data = {
