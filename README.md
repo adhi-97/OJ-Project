@@ -22,22 +22,18 @@ To run this project locally, follow these steps:
 
 ## Clone the repository
 
-```bash
 git clone https://github.com/yourusername/codeXpert.git
 
 ### Backend Setup (Django)
 
 1. Install the Required Packages:
-   ```bash
    pip install -r requirements.txt
 2. Set Up the Database
    Create a MySQL database and update the database settings in settings.py.
 3. Run Database Migrations
-```bash
-   python manage.py migrate
+python manage.py migrate
 4. Start the Django Server
-```bash
-   python manage.py runserver  
+python manage.py runserver  
 
 
 
