@@ -40,7 +40,7 @@ git clone [https://github.com/yourusername/codeXpert.git](https://github.com/adh
 1. Install the Required Packages
    ``` npm install ```
 2. Start the React Development Server
-   ''' npm start '''
+   ``` npm start ```
 
 ## Contributing
 We welcome contributions! Please fork the repository and submit a pull request with your improvements or features.
