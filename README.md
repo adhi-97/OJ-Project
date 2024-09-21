@@ -27,13 +27,13 @@ git clone [https://github.com/yourusername/codeXpert.git](https://github.com/adh
 ### Backend Setup (Django)
 
 1. Install the Required Packages:
-   ```bash pip install -r requirements.txt
+   ```bash pip install -r requirements.txt```
 2. Set Up the Database
    Create a MySQL database and update the database settings in settings.py.
 3. Run Database Migrations
-```bash python manage.py migrate
+```bash python manage.py migrate```
 4. Start the Django Server
-```bash python manage.py runserver  
+```bash python manage.py runserver  ```
 
 
 
