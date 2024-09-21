@@ -22,18 +22,18 @@ To run this project locally, follow these steps:
 
 ## Clone the repository
 
-git clone https://github.com/yourusername/codeXpert.git
+git clone [https://github.com/yourusername/codeXpert.git](https://github.com/adhi-97/OJ-Project.git)
 
 ### Backend Setup (Django)
 
 1. Install the Required Packages:
-   pip install -r requirements.txt
+   ```bash pip install -r requirements.txt
 2. Set Up the Database
    Create a MySQL database and update the database settings in settings.py.
 3. Run Database Migrations
-python manage.py migrate
+```bash python manage.py migrate
 4. Start the Django Server
-python manage.py runserver  
+```bash python manage.py runserver  
 
 
 
