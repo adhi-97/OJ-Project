@@ -46,5 +46,5 @@ git clone [https://github.com/yourusername/codeXpert.git](https://github.com/adh
 We welcome contributions! Please fork the repository and submit a pull request with your improvements or features.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the [MIT License](LICENSE).
 
