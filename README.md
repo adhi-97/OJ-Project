@@ -27,13 +27,24 @@ git clone [https://github.com/yourusername/codeXpert.git](https://github.com/adh
 ### Backend Setup (Django)
 
 1. Install the Required Packages:
-   ```bash pip install -r requirements.txt```
+   ``` pip install -r requirements.txt```
 2. Set Up the Database
    Create a MySQL database and update the database settings in settings.py.
 3. Run Database Migrations
-```bash python manage.py migrate```
+``` python manage.py migrate```
 4. Start the Django Server
-```bash python manage.py runserver  ```
+``` python manage.py runserver  ```
 
+### Frontend Setup (React)
 
+1. Install the Required Packages
+   ``` npm install ```
+2. Start the React Development Server
+   ''' npm start '''
+
+## Contributing
+We welcome contributions! Please fork the repository and submit a pull request with your improvements or features.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
