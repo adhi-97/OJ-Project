@@ -1,0 +1,12 @@
+[
+    { "input": "hello\n", "expected_output": "olleh\n" },
+    { "input": "world\n", "expected_output": "dlrow\n" },
+    { "input": "OpenAI\n", "expected_output": "IAnepO\n" },
+    { "input": "12345\n", "expected_output": "54321\n" },
+    { "input": "racecar\n", "expected_output": "racecar\n" },
+    { "input": "!@#\n", "expected_output": "#@!\n" },
+    { "input": "abcdefg\n", "expected_output": "gfedcba\n" },
+    { "input": " \n", "expected_output": " \n" },
+    { "input": "long string\n", "expected_output": "gnirts gnol\n" },
+    { "input": "single\n", "expected_output": "elgnis\n" }
+]

@@ -17,14 +17,23 @@ const CreateUser = () => {
       const response = await axiosInstance.post('auth/register/', {
         "username":username,
         "password":password,
+        "cpassword":confirm_password,
       });
       console.log('User created successfully:', response.data);
       // Navigate to another page if needed
-      navigate('/'); // Change '/success' to your desired route
+      if(response.data.error){
+        setError(''+error);
+      }else{
+        navigate('/'); // Change '/success' to your desired route
+      }
     } catch (error) {
       log.error('There was an error creating the user:', error);
       console.log('Errors');
-      setError('Failed to create user. Please try again.');
+      if (error.response && error.response.data && error.response.data.error) {
+        setError(error.response.data.error);
+    } else {
+        setError(''+error);
+    }
     }
   };
 
@@ -64,7 +73,7 @@ const CreateUser = () => {
             <div>
             <label htmlFor="confirm_password">Confirm Password</label>
             <input
-              type="confirm password"
+              type="password"
               name="confirm password"
               id="confirm_password"
               required
@@ -80,7 +89,7 @@ const CreateUser = () => {
           </button>
         </form>
         <br/>
-        <p className="signup">Already have an account?<a href="/">Login</a>
+        <p className="signup">Already have an account? <a href="/">Login</a>
         </p>
       </div>
     </div>

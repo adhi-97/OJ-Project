@@ -23,9 +23,13 @@ def register_user(request):
         data = json.loads(request.body)
         username = data.get('username')
         password = data.get('password')
+        cpassword = data.get('cpassword')
 
         if User.objects.filter(username=username).exists():
             return JsonResponse({'error': 'User with this username already exists'}, status=400)
+        
+        if password != cpassword:
+            return JsonResponse({'error': 'Passwords do not match'}, status=400)
         
         user = User.objects.create_user(username=username, password=password)
         user.save()

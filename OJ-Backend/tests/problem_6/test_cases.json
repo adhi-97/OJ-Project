@@ -1,0 +1,12 @@
+[
+    { "input": "5\n", "expected_output": "5\n" },
+    { "input": "10\n", "expected_output": "55\n" },
+    { "input": "0\n", "expected_output": "0\n" },
+    { "input": "1\n", "expected_output": "1\n" },
+    { "input": "2\n", "expected_output": "1\n" },
+    { "input": "6\n", "expected_output": "8\n" },
+    { "input": "7\n", "expected_output": "13\n" },
+    { "input": "15\n", "expected_output": "610\n" },
+    { "input": "20\n", "expected_output": "6765\n" },
+    { "input": "30\n", "expected_output": "832040\n" }
+]

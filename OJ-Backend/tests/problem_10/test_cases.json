@@ -1,0 +1,12 @@
+[
+    { "input": "()[]{}\n", "expected_output": "true\n" },
+    { "input": "(]\n", "expected_output": "false\n" },
+    { "input": "([{}])\n", "expected_output": "true\n" },
+    { "input": "({[})]\n", "expected_output": "false\n" },
+    { "input": "((()))\n", "expected_output": "true\n" },
+    { "input": ")\n", "expected_output": "false\n" },
+    { "input": "{[()]}\n", "expected_output": "true\n" },
+    { "input": "{(})\n", "expected_output": "false\n" },
+    { "input": "((()))()\n", "expected_output": "true\n" },
+    { "input": "[]\n", "expected_output": "true\n" }
+]

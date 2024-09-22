@@ -1,0 +1,12 @@
+[
+    { "input": "2\n3\n", "expected_output": "5\n" },
+    { "input": "-1\n1\n", "expected_output": "0\n" },
+    { "input": "0\n0\n", "expected_output": "0\n" },
+    { "input": "100\n200\n", "expected_output": "300\n" },
+    { "input": "1\n-1\n", "expected_output": "0\n" },
+    { "input": "500\n500\n", "expected_output": "1000\n" },
+    { "input": "123456\n654321\n", "expected_output": "777777\n" },
+    { "input": "-100\n100\n", "expected_output": "0\n" },
+    { "input": "10\n15\n", "expected_output": "25\n" },
+    { "input": "999\n1\n", "expected_output": "1000\n" }
+]
