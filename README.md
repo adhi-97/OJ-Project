@@ -13,7 +13,7 @@ Welcome to **codeXpert**, a web-based platform for coding enthusiasts to submit 
 
 - **Backend**: Django
 - **Frontend**: React
-- **Database**: MySQL
+- **Database**: sqlite3
 - **Containerization**: Docker
 
 ## Getting Started
@@ -22,7 +22,7 @@ To run this project locally, follow these steps:
 
 ## Clone the repository
 
-git clone [https://github.com/yourusername/codeXpert.git](https://github.com/adhi-97/OJ-Project.git)
+git clone [https://github.com/adhi-97/OJ-Project.git](https://github.com/adhi-97/OJ-Project.git)
 
 ### Backend Setup (Django)
 
