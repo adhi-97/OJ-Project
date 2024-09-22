@@ -4,7 +4,7 @@ Welcome to **codeXpert**, a web-based platform for coding enthusiasts to submit 
 
 ## Features
 
-- User authentication
+- User authentication using JWT token
 - Problem listing and detailed views
 - Code submission and evaluation
 - Test case management
