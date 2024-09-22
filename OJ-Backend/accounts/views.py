@@ -34,7 +34,10 @@ def register_user(request):
         user = User.objects.create_user(username=username, password=password)
         user.save()
 
-        return JsonResponse({'message': 'User created successfully'}, status=201)
+        # Generate JWT token
+        tokens = get_tokens_for_user(user)
+
+        return JsonResponse({'message': 'User created successfully','tokens': tokens}, status=201)
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)

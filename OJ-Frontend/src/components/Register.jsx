@@ -20,6 +20,8 @@ const CreateUser = () => {
         "cpassword":confirm_password,
       });
       console.log('User created successfully:', response.data);
+      localStorage.setItem('accessToken', response.data.tokens.access);
+      localStorage.setItem('refreshToken', response.data.tokens.refresh);
       // Navigate to another page if needed
       if(response.data.error){
         setError(''+error);
