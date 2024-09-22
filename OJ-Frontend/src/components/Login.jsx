@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import log from '../logger';
 import axiosInstance from '../utils/axiosConfig';
 
@@ -71,7 +71,7 @@ const LoginUser = () => {
           </button>
         </form>
         <br/>
-        <p className="signup">Don't have an account? <a href="/register">Sign Up</a>
+        <p className="signup">Don't have an account? <Link to="/register">Sign Up</Link>
         </p>
       </div>
     </div>
