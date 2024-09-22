@@ -1,0 +1,12 @@
+[
+    { "input": "abcabcbb\n", "expected_output": "3\n" },
+    { "input": "bbbbb\n", "expected_output": "1\n" },
+    { "input": "pwwkew\n", "expected_output": "3\n" },
+    { "input": "abcde\n", "expected_output": "5\n" },
+    { "input": "dvdf\n", "expected_output": "3\n" },
+    { "input": "aab\n", "expected_output": "2\n" },
+    { "input": "au\n", "expected_output": "2\n" },
+    { "input": "c\n", "expected_output": "1\n" },
+    { "input": "abcdefg\n", "expected_output": "7\n" },
+    { "input": "abcabcabc\n", "expected_output": "3\n" }
+]

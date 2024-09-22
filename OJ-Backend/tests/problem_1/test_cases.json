@@ -1,10 +1,12 @@
 [
-    {
-        "input": "2\n3\n",
-        "expected_output": "5\n"
-    },
-    {
-        "input": "10\n15\n",
-        "expected_output": "26\n"
-    }
+    { "input": "", "expected_output": "Hello World\n" },
+    { "input": " ", "expected_output": "Hello World\n" },
+    { "input": "Test\n", "expected_output": "Hello World\n" },
+    { "input": "123\n", "expected_output": "Hello World\n" },
+    { "input": "\n", "expected_output": "Hello World\n" },
+    { "input": "Hello\n", "expected_output": "Hello World\n" },
+    { "input": "World\n", "expected_output": "Hello World\n" },
+    { "input": "Hello World\n", "expected_output": "Hello World\n" },
+    { "input": "Test Input\n", "expected_output": "Hello World\n" },
+    { "input": "Goodbye\n", "expected_output": "Hello World\n" }
 ]

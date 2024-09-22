@@ -1,0 +1,12 @@
+[
+    { "input": "hello world\n", "expected_output": "3\n" },
+    { "input": "OpenAI\n", "expected_output": "3\n" },
+    { "input": "xyz\n", "expected_output": "0\n" },
+    { "input": "AEIOU\n", "expected_output": "5\n" },
+    { "input": "abracadabra\n", "expected_output": "5\n" },
+    { "input": "   \n", "expected_output": "0\n" },
+    { "input": "testing\n", "expected_output": "2\n" },
+    { "input": "abcdefghijklmnopqrstuvwxyz\n", "expected_output": "5\n" },
+    { "input": "HELLO\n", "expected_output": "2\n" },
+    { "input": "A quick brown fox jumps over the lazy dog\n", "expected_output": "11\n" }
+]

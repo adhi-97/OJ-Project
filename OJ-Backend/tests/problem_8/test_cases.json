@@ -1,0 +1,12 @@
+[
+    { "input": "1\n2\n4\n\n1\n3\n4\n\n", "expected_output": "1 1 2 3 4 4\n" },
+    { "input": "0\n\n5\n\n", "expected_output": "5\n" },
+    { "input": "3\n1\n3\n5\n\n2\n2\n4\n\n", "expected_output": "1 2 2 3 4 5\n" },
+    { "input": "4\n1\n2\n3\n4\n\n0\n\n", "expected_output": "1 2 3 4\n" },
+    { "input": "2\n5\n10\n\n3\n1\n2\n3\n\n", "expected_output": "1 1 2 3 5 10\n" },
+    { "input": "1\n1\n\n3\n2\n3\n4\n\n", "expected_output": "1 2 2 3 4\n" },
+    { "input": "3\n1\n3\n4\n\n1\n2\n\n", "expected_output": "1 1 2 3 4\n" },
+    { "input": "5\n1\n3\n5\n7\n\n3\n2\n4\n\n", "expected_output": "1 1 2 3 4 5 7\n" },
+    { "input": "0\n\n0\n\n", "expected_output": "\n" },
+    { "input": "2\n3\n4\n\n5\n1\n2\n\n", "expected_output": "1 2 3 4 5\n" }
+]

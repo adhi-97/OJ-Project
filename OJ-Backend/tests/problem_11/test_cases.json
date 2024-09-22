@@ -1,0 +1,12 @@
+[
+    { "input": "4\n", "expected_output": ".Q..\n...Q\nQ...\n..Q.\n\n..Q.\nQ...\n...Q\n.Q..\n" },
+    { "input": "1\n", "expected_output": "Q\n" },
+    { "input": "2\n", "expected_output": "\n" },
+    { "input": "3\n", "expected_output": "\n" },
+    { "input": "5\n", "expected_output": ".Q...\n...Q.\nQ....\n....Q\n..Q..\n\n..Q..\nQ....\n...Q.\n....Q\n.Q...\n" },
+    { "input": "6\n", "expected_output": "Q.....\n...Q..\n.....Q\n.Q....\n......Q\n..Q...\n\n....Q.\nQ.....\n..Q...\n.....Q\n...Q..\n" },
+    { "input": "7\n", "expected_output": "Q......\n.....Q.\n..Q...\n......Q\n....Q.\n.Q....\n...Q..\n\n...Q..\nQ......\n......Q\n.....Q.\n..Q...\n" },
+    { "input": "8\n", "expected_output": "Q.......\n.....Q..\n..Q.....\n......Q.\n...Q...\n....Q...\n.....Q.\n...Q...\n\n....Q..\nQ.......\nQ......\n......Q.\n" },
+    { "input": "10\n", "expected_output": ".Q......\n......Q.\n...Q...\n....Q...\n...Q...\nQ......\n....Q...\n..Q....\nQ......\n" },
+    { "input": "12\n", "expected_output": "Q......\n....Q...\nQ......\n.....Q.\n....Q...\n....Q...\n...Q...\nQ......\n..Q....\n" }
+]
